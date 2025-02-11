@@ -16,3 +16,4 @@ LazyData: true
 RoxygenNote: 7.3.2
 Imports:
   dplyr
+Depends: R (>= 4.3.3)
