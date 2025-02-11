@@ -1,0 +1,18 @@
+Package: Rsak
+Type: Package
+Title: R Swiss Army Knife
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Jane", "Doe",
+      email = "jane@example.com",
+      role = c("aut", "cre")
+    )
+  )
+Description: Collection of Miscellaneous R Functions.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+Imports:
+  dplyr
