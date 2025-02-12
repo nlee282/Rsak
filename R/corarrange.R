@@ -1,16 +1,16 @@
 
-#' Arranged cor matrix
+#' Arrange numeric variables by correlation.
 #'
-#' Arrange a cor matrix by correlation.
 #' @importFrom dplyr arrange desc filter select
-#' @param matrix Matrix
+#' @param matrix Dataframe, numeric values
 #' @param var (Optional) filter by specific variable
-#' @return Arranged cor matrix
+#' @return Table of correlations, arranged by correlation coefficient
 #' @export
-corarrange <- function(matrix, var) {
+corarrange <- function(dataframe, var) {
 
-  abs_cor = abs(cor(matrix)) # absolute value of all values in matrix
-  correlation <- as.data.frame(as.table(abs_cor)) # matrix -> data frame
+  dataframe <- select(dataframe, where(is.numeric))
+
+  correlation <- as.data.frame(as.table(abs(cor(dataframe)))) # abs(cor matrix) -> data frame
   correlation <- arrange(correlation, desc(Freq)) # arrange by frequency
 
   if (!missing(var)) {
@@ -19,7 +19,7 @@ corarrange <- function(matrix, var) {
 
   clean_correlation <- filter(correlation, Freq<1) # filter out variable against variable (PRE of 1)
   clean_correlation$Index <- c(1:nrow(clean_correlation)) # index rows
-  clean_correlation <- filter(clean_correlation, Index%%2==1) # removes duplicates
+  clean_correlation <- filter(clean_correlation, Index %% 2 == 1) # removes duplicates
 
   return(select(clean_correlation, Var1, Var2, Freq))
 

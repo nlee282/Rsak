@@ -2,18 +2,18 @@
 % Please edit documentation in R/corarrange.R
 \name{corarrange}
 \alias{corarrange}
-\title{Arranged cor matrix}
+\title{Arrange numeric variables by correlation.}
 \usage{
-corarrange(matrix, var)
+corarrange(dataframe, var)
 }
 \arguments{
-\item{matrix}{Matrix}
-
 \item{var}{(Optional) filter by specific variable}
+
+\item{matrix}{Dataframe, numeric values}
 }
 \value{
-Arranged cor matrix
+Table of correlations, arranged by correlation coefficient
 }
 \description{
-Arrange a cor matrix by correlation.
+Arrange numeric variables by correlation.
 }
