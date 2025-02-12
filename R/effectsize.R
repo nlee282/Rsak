@@ -27,15 +27,16 @@ effectsize <- function(formula, data) {
   df_1 <- length(na.omit(groups[[1]]))-1
   df_2 <- length(na.omit(groups[[2]]))-1
 
-  pooled_sd <- (df_1*sd_1 + df_2*sd_2)/(df_1+df_2)
+  pooled_sd <- sqrt((df_1*sd_1^2 + df_2*sd_2^2)/(df_1+df_2))
   d <- mean_diff/pooled_sd
 
   val <- data.frame(
-    b1 <- mean_diff,
+    b1 = mean_diff,
     cohensD = d,
-    PRE <- PRE,
-    df_1 <- df_1,
-    df_2 <- df_2
+    PRE = PRE,
+    df_1 = df_1,
+    df_2 = df_2
   )
+  rownames(val) <- ""
   return(val)
 }
