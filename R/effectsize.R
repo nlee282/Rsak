@@ -6,6 +6,7 @@
 #' @return Table of effect size
 #' @export
 effectsize <- function(formula, data) {
+  # get outcome and explanatory variable names
   outcome <- all.vars(formula)[1]
   explanatory <- all.vars(formula)[2]
   y = data[[outcome]]

@@ -8,7 +8,7 @@
 #' @export
 corarrange <- function(dataframe, var) {
 
-  dataframe <- select(dataframe, where(is.numeric))
+  dataframe <- select(dataframe, where(is.numeric), where(is.integer))
 
   correlation <- as.data.frame(as.table(abs(cor(dataframe)))) # abs(cor matrix) -> data frame
   correlation <- arrange(correlation, desc(Freq)) # arrange by frequency
